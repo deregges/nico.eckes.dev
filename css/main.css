@@ -1195,6 +1195,7 @@ header {
 	min-width: 210px;
 	border-radius: var(--button-border-radius);
 	height: auto;
+	display: none;
 }
 .main-navigation > li {
 	display: block;
