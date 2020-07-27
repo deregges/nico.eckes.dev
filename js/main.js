@@ -24,76 +24,11 @@
 
     })
 
-
-    /*---------------------------------------------------- */
-    /* FitText Settings
-    ------------------------------------------------------ */
-    setTimeout(function () {
-
-        $('#intro h1').fitText(1, {minFontSize: '42px', maxFontSize: '84px'});
-
-    }, 100);
-
-
-    /*---------------------------------------------------- */
-    /* FitVids
-    ------------------------------------------------------ */
-    $(".fluid-video-wrapper").fitVids();
-
-
-    /*---------------------------------------------------- */
-    /* Owl Carousel
-    ------------------------------------------------------ */
-    $("#owl-slider").owlCarousel({
-        navigation: false,
-        pagination: true,
-        itemsCustom: [
-            [0, 1],
-            [700, 2],
-            [960, 3]
-        ],
-        navigationText: false
-    });
-
-
     /*----------------------------------------------------- */
     /* Alert Boxes
       ------------------------------------------------------- */
     $('.alert-box').on('click', '.close', function () {
         $(this).parent().fadeOut(500);
-    });
-
-    /*---------------------------------------------------- */
-    /*	Masonry
-    ------------------------------------------------------ */
-    const containerProjects = $('#folio-wrapper');
-
-    containerProjects.imagesLoaded(function () {
-
-        containerProjects.masonry({
-            itemSelector: '.folio-item',
-            resize: true
-        });
-
-    });
-
-
-    /*----------------------------------------------------*/
-    /*	Modal Popup
-    ------------------------------------------------------*/
-    $('.item-wrap a').magnificPopup({
-
-        type: 'inline',
-        fixedContentPos: false,
-        removalDelay: 300,
-        showCloseBtn: false,
-        mainClass: 'mfp-fade'
-
-    });
-
-    $(document).on('click', '.popup-modal-dismiss', function (e) {
-        e.preventDefault();
-        $.magnificPopup.close();
     });
 
 
@@ -189,7 +124,7 @@
 			$.ajax({
 
                 type: "POST",
-                url: "inc/sendEmail.php",
+                url: "https://contact.eckes.dev",
                 data: $(form).serialize(),
                 beforeSend: function () {
                     sLoader.fadeIn();
@@ -211,7 +146,7 @@
                 },
                 error: function () {
                     sLoader.fadeOut();
-					mWarning.html("Something went wrong. Please try again.");
+					mWarning.html("Something went wrong. Please mail me manually by contact@eckes.dev");
 					mWarning.fadeIn();
                 }
             });
@@ -220,21 +155,15 @@
 
     /*----------------------------------------------------- */
     /* Back to top
- ------------------------------------------------------- */
-	const pxShow = 300; // height on which the button will show
-	const fadeInTime = 400; // how slow/fast you want the button to show
-	const fadeOutTime = 400; // how slow/fast you want the button to hide
-	const scrollSpeed = 300; // how slow/fast you want the button to scroll to top. can be a value, 'slow', 'normal' or 'fast'
-
-    // Show or hide the sticky footer button
-    jQuery(window).scroll(function () {
+    ------------------------------------------------------- */
+    $(window).scroll(function () {
 
         if (!($("#header-search").hasClass('is-visible'))) {
 
-            if (jQuery(window).scrollTop() >= pxShow) {
-                jQuery("#go-top").fadeIn(fadeInTime);
+            if ($(window).scrollTop() >= 300) {
+                $("#go-top").fadeIn(400);
             } else {
-                jQuery("#go-top").fadeOut(fadeOutTime);
+                $("#go-top").fadeOut(400);
             }
         }
     });
