@@ -129,7 +129,7 @@ $('#contactForm').validate({
             },
             success: function (msg) {
                 // Message was sent
-                if (msg === 'OK') {
+                if (msg.toString().trim() === 'OK') {
                     sLoader.fadeOut();
                     $('#message-warning').hide();
                     $('#contactForm').fadeOut();
